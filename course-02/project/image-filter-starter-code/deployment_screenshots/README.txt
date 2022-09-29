@@ -2,6 +2,8 @@ Projet 2Ud Udagram: Your Own Instagram on AWS
 
 - Github deploy
 
+https://github.com/oury011/cloud-developer/tree/master/course-02/project/image-filter-starter-code
+
 - Le point de terminaison @TODO1 ayant fait l'objet d'un stub src/server.ts
 
 http://localhost:8082/filteredimage?image_url=https://images.pexels.com/photos/13633764/pexels-photo-13633764.jpeg
