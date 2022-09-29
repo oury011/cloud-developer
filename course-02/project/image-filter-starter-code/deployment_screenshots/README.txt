@@ -1,4 +1,4 @@
-Projet 2 : Udagram: Your Own Instagram on AWS
+Projet 2Ud Udagram: Your Own Instagram on AWS
 
 - Github deploy
 
