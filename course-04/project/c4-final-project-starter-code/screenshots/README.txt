@@ -6,8 +6,8 @@ https://github.com/oury011/cloud-developer/tree/main/course-04/project/c4-final-
 
 2. l'identifiant de l'API de l'Application deployer
 
-apiId = 'aiht1a8mr6'
+apiId = '7vciiqbxyl'
 
 3. L'url de l'apiEndpoint
 
-apiEndpoint = `https://aiht1a8mr6.execute-api.us-east-1.amazonaws.com/dev`
+apiEndpoint = `https://7vciiqbxyl.execute-api.us-east-1.amazonaws.com/dev`

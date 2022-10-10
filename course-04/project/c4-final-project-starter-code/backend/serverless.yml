@@ -1,5 +1,5 @@
 # TODO: Change the name of the org 
-org: dialloamadou011
+org: myorgdiallo
 app: serverless-todo-app
 service: serverless-todo-app
 
@@ -8,6 +8,7 @@ plugins:
   - serverless-iam-roles-per-function
   - serverless-plugin-tracing
   #- serverless-aws-documentation
+  - serverless-reqvalidator-plugin
 
 provider:
   name: aws
@@ -27,7 +28,7 @@ provider:
     PROJECT_NAME: ntappsl
     TODOS_TABLE: Todos-${self:provider.stage}
     TODOS_CREATED_AT_INDEX: CreatedAtIndex
-    ATTACHMENT_S3_BUCKET: ntappsl-${self:provider.stage}
+    ATTACHMENT_S3_BUCKET: ntappslv1-${self:provider.stage}
     #ÒSIGNED_URL_EXPIRATION: 300
 
   # logs:
@@ -59,6 +60,7 @@ functions:
           path: todos
           cors: true
           authorizer: Auth
+          reqValidatorName: 'oMyRequestValidator'
     iamRoleStatementsInherit: true
     iamRoleStatements:
       - Effect: Allow
@@ -78,6 +80,7 @@ functions:
           path: todos
           cors: true
           authorizer: Auth
+          reqValidatorName: 'oMyRequestValidator'
           request:
             schemas:
               application/json: ${file(models/create-todo-model.json)}
@@ -98,6 +101,7 @@ functions:
           path: todos/{todoId}
           cors: true
           authorizer: Auth
+          reqValidatorName: 'oMyRequestValidator'
           request:
             schemas:
               application/json: ${file(models/update-todo-model.json)}
@@ -118,6 +122,7 @@ functions:
           path: todos/{todoId}
           cors: true
           authorizer: Auth
+          reqValidatorName: 'oMyRequestValidator'
     iamRoleStatementsInherit: true
     iamRoleStatements:
       - Effect: Allow
@@ -136,6 +141,7 @@ functions:
           path: todos/{todoId}/attachment
           cors: true
           authorizer: Auth
+          reqValidatorName: 'oMyRequestValidator'
     iamRoleStatementsInherit: true
     iamRoleStatements:
       - Effect: Allow
@@ -148,6 +154,16 @@ resources:
     # Add necessary AWS resources. You will need at least the following AWS resources
     # Fait: Fill the properties
     # Feel free to change the names as you like. 
+
+    oMyRequestValidator:  
+      Type: "AWS::ApiGateway::RequestValidator"
+      Properties:
+        Name: 'only-body'
+        RestApiId: 
+          Ref: ApiGatewayRestApi
+        ValidateRequestBody: true
+        ValidateRequestParameters: false
+
     GatewayResponseDefault4XX:
       Type: AWS::ApiGateway::GatewayResponse
       Properties:
