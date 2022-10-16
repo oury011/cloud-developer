@@ -1,6 +1,6 @@
 Projet 2Ud Udagram: Your Own Instagram on AWS
 
-- Github deploy
+- Github deploy 
 
 - Le point de terminaison @TODO1 ayant fait l'objet d'un stub src/server.ts
 
